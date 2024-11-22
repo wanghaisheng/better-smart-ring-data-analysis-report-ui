@@ -1,0 +1,854 @@
+<html><head><base href="https://domain.xyz/" />
+<style>
+:root {
+  --primary: #2B5F75;
+  --secondary: #48A1C3;
+  --accent: #FFB26B;
+  --text: #333;
+  --bg: #F5F9FA;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--primary);
+}
+
+.sleep-score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+}
+
+.score-circle {
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+
+.chart-container {
+  margin: 30px 0;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.stat-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.insight-card {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.recommendation {
+  background: #fff;
+  border-left: 4px solid var(--accent);
+  padding: 15px;
+  margin: 10px 0;
+  transition: transform 0.2s ease;
+}
+
+.recommendation:hover {
+  transform: translateX(5px);
+}
+
+.trends-section {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.baseline-comparison {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.correlation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.correlation-item {
+  background: linear-gradient(135deg, rgba(43, 95, 117, 0.1), rgba(72, 161, 195, 0.1));
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid var(--secondary);
+}
+
+.baseline-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.baseline-card {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid var(--secondary);
+}
+
+/* Animation */
+@keyframes fillCircle {
+  from { stroke-dasharray: 0 283; }
+  to { stroke-dasharray: 200 283; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.positive-trends {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.success-highlight {
+  border-left: 4px solid var(--accent);
+}
+
+.success-highlight ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.success-highlight ul li {
+  margin: 10px 0;
+  padding-left: 25px;
+  position: relative;
+}
+
+.success-highlight ul li:before {
+  content: "✓";
+  color: var(--accent);
+}
+
+.details-button {
+  background: var(--secondary);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 0;
+  transition: all 0.3s ease;
+}
+
+.details-button:hover {
+  background: var(--primary);
+  transform: translateY(-2px);
+}
+
+.chart-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.chart-modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 800px;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.close-modal {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.highlight-point {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.annotation-label {
+  background: var(--accent);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.chart-controls {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.trend-toggle {
+  padding: 8px 16px;
+  border: 1px solid var(--secondary);
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.trend-toggle.active {
+  background: var(--secondary);
+  color: white;
+}
+
+.data-interaction {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+.interaction-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.data-notes {
+  max-height: 200px;
+  overflow-y: auto;
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+</head>
+<body>
+
+<div class="container">
+  <div class="header fade-in">
+    <h1>睡眠健康洞察报告</h1>
+    <p>张三的个性化睡眠分析 | 2024年2月</p>
+  </div>
+
+  <div class="sleep-score fade-in">
+    <svg class="score-circle" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="45" fill="none" stroke="#eee" stroke-width="5"/>
+      <circle cx="50" cy="50" r="45" fill="none" stroke="var(--accent)" 
+              stroke-width="5" stroke-dasharray="200 283" 
+              style="animation: fillCircle 1.5s ease-out">
+      </circle>
+      <text x="50" y="45" text-anchor="middle" font-size="20" fill="var(--primary)">85分</text>
+      <text x="50" y="60" text-anchor="middle" font-size="8" fill="var(--primary)">优秀</text>
+    </svg>
+  </div>
+
+  <div class="stats-grid fade-in">
+    <div class="stat-card">
+      <h3>平均睡眠时长</h3>
+      <p>7.3小时</p>
+      <small>推荐范围: 7-9小时</small>
+    </div>
+    <div class="stat-card">
+      <h3>深度睡眠比例</h3>
+      <p>25%</p>
+      <small>高于同龄人均值</small>
+    </div>
+    <div class="stat-card">
+      <h3>睡眠规律性</h3>
+      <p>90%</p>
+      <small>作息非常规律</small>
+    </div>
+  </div>
+
+  <div class="chart-container fade-in">
+    <canvas id="sleepTrendChart"></canvas>
+  </div>
+
+  <div class="insight-card fade-in">
+    <h3>✨ 本月亮点</h3>
+    <p>你的深度睡眠时间比上月提升了15%！这说明你在建立健康作息方面取得了显著进步。</p>
+    <p>在运动日的睡眠质量明显更好，继续保持这个好习惯！</p>
+  </div>
+
+  <div class="trends-section fade-in">
+    <h3>📊 睡眠趋势分析</h3>
+    <p>过去一周的睡眠时长保持稳定，波动范围在6.8-7.6小时之间。周末的睡眠时长略高，这有助于消除工作日累积的疲劳。</p>
+    <button class="details-button" onclick="showDetailModal('sleep-quality')">
+      查看详细趋势
+    </button>
+  </div>
+
+  <div class="positive-trends fade-in">
+    <h3>🌟 积极表现分析</h3>
+    <div class="correlation-grid">
+      <div class="correlation-item">
+        <h4>最佳表现期</h4>
+        <p>本月最佳睡眠质量出现在:</p>
+        <ul>
+          <li>运动后的夜晚 (+25%)</li>
+          <li>工作压力较低时 (+20%)</li>
+          <li>保持规律作息时 (+18%)</li>
+        </ul>
+      </div>
+      <div class="correlation-item">
+        <h4>有效习惯识别</h4>
+        <p>显著改善睡眠的行为:</p>
+        <ul>
+          <li>晚饭后散步20分钟</li>
+          <li>睡前10分钟冥想</li>
+          <li>保持卧室温度21℃</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="success-highlight" style="background: linear-gradient(135deg, rgba(72, 161, 195, 0.1), rgba(255, 178, 107, 0.1)); padding: 20px; border-radius: 10px; margin: 20px 0;">
+      <h4>💫 最佳状态复现建议</h4>
+      <p>根据你的数据，以下组合最容易带来高质量睡眠：</p>
+      <ul>
+        <li>下午4点前完成30分钟有氧运动</li>
+        <li>晚餐选择低脂高蛋白餐点</li>
+        <li>睡前1小时关闭电子设备</li>
+        <li>保持卧室通风和适宜温度</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="recommendations fade-in">
+    <h3>🌟 个性化建议</h3>
+    <div class="recommendation">
+      <h4>保持运动习惯</h4>
+      <p>继续保持每周3-4次的运动频率，建议在下午4点前完成运动。</p>
+    </div>
+    <div class="recommendation">
+      <h4>优化睡眠环境</h4>
+      <p>建议将卧室温度保持在20-22℃，并确保光线充足度适中。</p>
+    </div>
+    <div class="recommendation">
+      <h4>晚间放松</h4>
+      <p>睡前1小时避免使用电子设备，可以尝试冥想或轻度拉伸。</p>
+    </div>
+  </div>
+
+  <div class="baseline-comparison fade-in">
+    <h3>🎯 基线对比分析</h3>
+    <div class="baseline-grid">
+      <div class="baseline-card">
+        <h4>个人基线</h4>
+        <p>过去3个月平均:</p>
+        <ul>
+          <li>睡眠时长: 7.1小时 (当前+0.2小时)</li>
+          <li>入睡时间: 23:30 (当前提前15分钟)</li>
+          <li>深度睡眠: 22% (当前+3%)</li>
+        </ul>
+      </div>
+      <div class="baseline-card">
+        <h4>群体基线</h4>
+        <p>同年龄段(30-35岁)平均:</p>
+        <ul>
+          <li>睡眠时长: 6.9小时 (你高出0.4小时)</li>
+          <li>入睡时间: 23:45 (你提前15分钟)</li>
+          <li>深度睡眠: 20% (你高出5%)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="correlation-section fade-in">
+    <h3>🔄 全面关联性分析</h3>
+    
+    <h4>行为因素分析</h4>
+    <div class="correlation-grid">
+      <div class="correlation-item">
+        <h4>运动行为</h4>
+        <p>运动日深度睡眠提升18%</p>
+        <p>静息心率降低3-5次/分</p>
+        <p>相关系数: 0.82 (强相关)</p>
+      </div>
+      <div class="correlation-item">
+        <h4>饮食习惯</h4>
+        <p>晚餐后3小时内入睡影响：</p>
+        <ul>
+          <li>入睡时间延长15分钟</li>
+          <li>深度睡眠质量降低8%</li>
+        </ul>
+        <p>相关系数: -0.65 (中度负相关)</p>
+      </div>
+      <div class="correlation-item">
+        <h4>工作压力</h4>
+        <p>高压工作日表现：</p>
+        <ul>
+          <li>睡眠质量降低12%</li>
+          <li>心率变异性降低15%</li>
+        </ul>
+        <p>相关系数: -0.78 (强负相关)</p>
+      </div>
+      <div class="correlation-item">
+        <h4>作息规律</h4>
+        <p>固定作息与睡眠质量：</p>
+        <ul>
+          <li>深度睡眠提升20%</li>
+          <li>入睡时间缩短10分钟</li>
+        </ul>
+        <p>相关系数: 0.85 (强相关)</p>
+      </div>
+    </div>
+
+    <h4>环境因素分析</h4>
+    <div class="correlation-grid">
+      <div class="correlation-item">
+        <h4>室温控制</h4>
+        <p>最适温度范围20-22℃：</p>
+        <ul>
+          <li>深度睡眠提升8%</li>
+          <li>翻身次数减少25%</li>
+        </ul>
+        <p>相关系数: 0.71 (强相关)</p>
+      </div>
+      <div class="correlation-item">
+        <h4>光线影响</h4>
+        <p>黑暗环境效果：</p>
+        <ul>
+          <li>入睡速度提升30%</li>
+          <li>睡眠质量提升15%</li>
+        </ul>
+        <p>相关系数: 0.68 (中度相关)</p>
+      </div>
+      <div class="correlation-item">
+        <h4>噪音控制</h4>
+        <p>安静环境（<30分贝）：</p>
+        <ul>
+          <li>深度睡眠增加12%</li>
+          <li>睡眠中断减少40%</li>
+        </ul>
+        <p>相关系数: -0.75 (强负相关)</p>
+      </div>
+      <div class="correlation-item">
+        <h4>空气质量</h4>
+        <p>通风良好环境：</p>
+        <ul>
+          <li>血氧饱和度提升2%</li>
+          <li>睡眠质量提升10%</li>
+        </ul>
+        <p>相关系数: 0.62 (中度相关)</p>
+      </div>
+    </div>
+
+    <h4>周期性趋势</h4>
+    <div class="correlation-grid">
+      <div class="correlation-item">
+        <h4>工作日vs周末</h4>
+        <p>周末睡眠特点：</p>
+        <ul>
+          <li>睡眠时长增加1.2小时</li>
+          <li>深度睡眠提升15%</li>
+        </ul>
+      </div>
+      <div class="correlation-item">
+        <h4>季节性变化</h4>
+        <p>当前季节特征：</p>
+        <ul>
+          <li>较春秋季睡眠时长-0.5小时</li>
+          <li>入睡时间延后30分钟</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="sleep-quality-modal" class="chart-modal">
+    <div class="chart-modal-content">
+      <span class="close-modal" onclick="hideDetailModal('sleep-quality')">&times;</span>
+      <h3>睡眠质量详细趋势</h3>
+      
+      <div class="chart-controls">
+        <button class="trend-toggle active" data-trend="all">全部趋势</button>
+        <button class="trend-toggle" data-trend="weekly">周期性</button>
+        <button class="trend-toggle" data-trend="fluctuation">波动分析</button>
+      </div>
+      
+      <div class="chart-wrapper">
+        <canvas id="sleep-quality-detail"></canvas>
+      </div>
+      
+      <div class="data-interaction">
+        <h4>数据标记</h4>
+        <div class="interaction-controls">
+          <button onclick="markInvalidData()">标记无效数据</button>
+          <button onclick="addDataNote()">添加备注</button>
+        </div>
+        <div class="data-notes">
+          <h5>数据备注</h5>
+          <div id="notes-container"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function calculateTrendLine(data) {
+  const n = data.length;
+  let sumX = 0;
+  let sumY = 0;
+  let sumXY = 0;
+  let sumXX = 0;
+
+  for (let i = 0; i < n; i++) {
+    sumX += i;
+    sumY += data[i];
+    sumXY += i * data[i];
+    sumXX += i * i;
+  }
+
+  const slope = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX);
+  const intercept = (sumY - slope * sumX) / n;
+
+  return data.map((_, i) => slope * i + intercept);
+}
+
+function calculateWeeklyPattern(data) {
+  const movingAverage = [];
+  const windowSize = 7;
+
+  for (let i = 0; i < data.length; i++) {
+    if (i < windowSize - 1) {
+      movingAverage.push(null);
+      continue;
+    }
+
+    let sum = 0;
+    for (let j = 0; j < windowSize; j++) {
+      sum += data[i - j];
+    }
+    movingAverage.push(sum / windowSize);
+  }
+
+  return movingAverage;
+}
+
+function getNoteForData(index) {
+  const notes = JSON.parse(localStorage.getItem('dataNotes') || '{}');
+  return notes[index] || '';
+}
+
+function showDataInteractionMenu(dataIndex) {
+  console.log(`Showing interaction menu for data point ${dataIndex}`);
+}
+
+function markInvalidData(index) {
+  const invalidData = JSON.parse(localStorage.getItem('invalidData') || '[]');
+  invalidData.push(index);
+  localStorage.setItem('invalidData', JSON.stringify(invalidData));
+  
+  const chart = detailCharts['sleep-quality-detail'];
+  if (chart) {
+    chart.data.datasets[0].pointBackgroundColor = chart.data.datasets[0].data.map((_, i) => 
+      invalidData.includes(i) ? 'rgba(200, 200, 200, 0.5)' : 'rgba(72, 161, 195, 1)'
+    );
+    chart.update();
+  }
+  
+  addDataNote(`数据点 ${index + 1} 已标记为无效数据`);
+}
+
+function addDataNote() {
+  const note = prompt('请输入数据备注:');
+  if (note) {
+    const notes = JSON.parse(localStorage.getItem('dataNotes') || '{}');
+    const selectedPoint = detailCharts['sleep-quality-detail'].getActiveElements()[0];
+    
+    if (selectedPoint) {
+      const index = selectedPoint.index;
+      notes[index] = note;
+      localStorage.setItem('dataNotes', JSON.stringify(notes));
+      
+      const notesContainer = document.getElementById('notes-container');
+      const noteElement = document.createElement('div');
+      noteElement.textContent = `数据点 ${index + 1}: ${note}`;
+      notesContainer.appendChild(noteElement);
+    }
+  }
+}
+
+let detailCharts = {};
+
+function createDetailChart(canvasId, data) {
+  if (detailCharts[canvasId]) {
+    detailCharts[canvasId].destroy();
+  }
+
+  const ctx = document.getElementById(canvasId).getContext('2d');
+  
+  const values = data.datasets[0].data;
+  const mean = values.reduce((a, b) => a + b, 0) / values.length;
+  const stdDev = Math.sqrt(values.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / values.length);
+  
+  const anomalyPoints = values.map((val, idx) => {
+    return Math.abs(val - mean) > 2 * stdDev ? {
+      x: idx,
+      y: val
+    } : null;
+  }).filter(point => point !== null);
+
+  const trendLine = calculateTrendLine(data.datasets[0].data);
+  const weeklyPattern = calculateWeeklyPattern(data.datasets[0].data);
+  
+  const newChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: data.labels,
+      datasets: [
+        {
+          label: '睡眠质量评分',
+          data: data.datasets[0].data,
+          borderColor: 'var(--secondary)',
+          backgroundColor: 'rgba(72, 161, 195, 0.1)',
+          fill: true
+        },
+        {
+          label: '总体趋势',
+          data: trendLine,
+          borderColor: 'rgba(255, 99, 132, 0.8)',
+          borderDash: [5, 5],
+          fill: false,
+          hidden: true
+        },
+        {
+          label: '周期性趋势',
+          data: weeklyPattern,
+          borderColor: 'rgba(75, 192, 192, 0.8)',
+          borderDash: [3, 3],
+          fill: false,
+          hidden: true
+        },
+        {
+          label: '异常值',
+          data: anomalyPoints,
+          type: 'scatter',
+          pointStyle: 'circle',
+          pointRadius: 8,
+          pointBackgroundColor: 'rgba(255, 0, 0, 0.5)',
+          pointBorderColor: 'red',
+          pointBorderWidth: 2,
+          showLine: false
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        tooltip: {
+          callbacks: {
+            afterBody: function(context) {
+              const idx = context[0].dataIndex;
+              const val = data.datasets[0].data[idx];
+              const note = getNoteForData(idx);
+              let tooltipText = '';
+              
+              if (Math.abs(val - mean) > 2 * stdDev) {
+                tooltipText += `\n⚠️ 可能的异常值\n偏离均值: ${(val - mean).toFixed(2)}`;
+              }
+              if (note) {
+                tooltipText += `\n📝 备注: ${note}`;
+              }
+              return tooltipText;
+            }
+          }
+        }
+      },
+      onClick: function(event, elements) {
+        if (elements.length > 0) {
+          const idx = elements[0].index;
+          const val = data.datasets[0].data[idx];
+          if (Math.abs(val - mean) > 2 * stdDev) {
+            if (confirm('这个数据点可能是异常值。是否标记为无效数据？')) {
+              markInvalidData(idx);
+            }
+          }
+        }
+      }
+    }
+  });
+
+  document.querySelectorAll('.trend-toggle').forEach(button => {
+    button.addEventListener('click', function() {
+      const trendType = this.dataset.trend;
+      
+      document.querySelectorAll('.trend-toggle').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      this.classList.add('active');
+      
+      if (trendType === 'all') {
+        newChart.show(1);
+        newChart.show(2);
+      } else if (trendType === 'weekly') {
+        newChart.hide(1);
+        newChart.show(2);
+      } else if (trendType === 'fluctuation') {
+        newChart.show(1);
+        newChart.hide(2);
+      }
+      
+      newChart.update();
+    });
+  });
+
+  detailCharts[canvasId] = newChart;
+  return newChart;
+}
+
+function showDetailModal(modalId) {
+  const modal = document.getElementById(`${modalId}-modal`);
+  modal.style.display = 'flex';
+
+  const sampleData = {
+    labels: Array.from({length: 30}, (_, i) => `${i + 1}日`),
+    datasets: [{
+      data: Array.from({length: 30}, () => 70 + Math.random() * 20)
+    }]
+  };
+
+  createDetailChart(`${modalId}-detail`, sampleData);
+}
+
+function hideDetailModal(modalId) {
+  const modal = document.getElementById(`${modalId}-modal`);
+  modal.style.display = 'none';
+
+  if (detailCharts[`${modalId}-detail`]) {
+    detailCharts[`${modalId}-detail`].destroy();
+    delete detailCharts[`${modalId}-detail`];
+  }
+}
+
+const ctx = document.getElementById('sleepTrendChart').getContext('2d');
+new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['1周前', '6天前', '5天前', '4天前', '3天前', '2天前', '昨天'],
+        datasets: [{
+            label: '睡眠时长（小时）',
+            data: [7.2, 6.8, 7.5, 7.1, 7.3, 7.6, 7.4],
+            borderColor: 'var(--secondary)',
+            backgroundColor: 'rgba(72, 161, 195, 0.1)',
+            tension: 0.4,
+            fill: true
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: '过去一周睡眠趋势',
+                font: {
+                    size: 16
+                }
+            },
+            legend: {
+                display: true,
+                position: 'top'
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: false,
+                min: 6,
+                max: 9,
+                ticks: {
+                    stepSize: 0.5
+                }
+            }
+        },
+        interaction: {
+            intersect: false,
+            mode: 'index'
+        }
+    }
+});
+
+const observerOptions = {
+    threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.fade-in').forEach(element => {
+    observer.observe(element);
+});
+</script>
+
+</body></html>
