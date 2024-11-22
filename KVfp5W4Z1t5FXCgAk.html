@@ -1,0 +1,502 @@
+<html><head><base href="https://domain.xyz/" />
+<title>智能戒指睡眠分析</title>
+<style>
+:root {
+  --primary: #2B5F75;
+  --secondary: #48A1C3;
+  --accent: #FFB26B;
+  --text: #333;
+  --bg: #F5F9FA;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 120px 20px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2em;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+.cta-button {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 15px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  margin-top: 30px;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+}
+
+.features {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.feature-card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card h3 {
+  color: var(--primary);
+  margin-bottom: 15px;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 100;
+}
+
+.logo {
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 1.5em;
+  text-decoration: none;
+}
+
+.nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  margin-left: 30px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--secondary);
+}
+
+.how-it-works {
+  background: white;
+  padding: 80px 20px;
+}
+
+.process-steps {
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.step-number {
+  background: var(--accent);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step:not(:last-child):after {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 40px;
+  bottom: -20px;
+  width: 2px;
+  background: var(--accent);
+  opacity: 0.3;
+}
+
+.science-section {
+  background: #f8f9fa;
+  padding: 80px 20px;
+}
+
+.theory-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.insomnia-types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin: 40px 0;
+}
+
+.type-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.type-card h3 {
+  color: var(--primary);
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 10px;
+}
+
+.diagnostic-indicators {
+  margin-top: 40px;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.indicator-group {
+  margin: 20px 0;
+}
+
+.indicator-group h4 {
+  color: var(--secondary);
+  margin-bottom: 10px;
+}
+
+.indicator-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.indicator-tag {
+  background: var(--bg);
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  color: var(--primary);
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#" class="logo">智眠分析</a>
+  <div class="nav-links">
+    <a href="#features">功能特点</a>
+    <a href="#how-it-works">工作原理</a>
+    <a href="report.html">查看示例报告</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>用智能戒指改变您的睡眠质量</h1>
+  <p>由人工智能和尖端传感器技术驱动的高级睡眠分析</p>
+  <a href="report.html" class="cta-button">查看睡眠分析示例</a>
+</section>
+
+<section id="features" class="features">
+  <h2>我们的高级分析功能</h2>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <h3>智能数据采集与预处理</h3>
+      <p>采用医疗级传感器实时采集心率、心率变异性(HRV)、体温、体动和血氧等关键生理指标。通过高精度信号处理算法，确保数据质量和准确性。</p>
+    </div>
+    <div class="feature-card">
+      <h3>多维度睡眠分析</h3>
+      <p>结合传统医学理论和现代睡眠科学，从生理、心理和环境三个维度解读您的睡眠质量。识别影响睡眠的关键因素，如压力水平、昼夜节律和生活方式习惯。</p>
+    </div>
+    <div class="feature-card">
+      <h3>AI驱动的模式识别</h3>
+      <p>运用机器学习算法分析长期睡眠数据，识别潜在的睡眠障碍模式。通过深度学习模型预测睡眠质量变化趋势，及早发现潜在问题。</p>
+    </div>
+    <div class="feature-card">
+      <h3>个性化干预策略</h3>
+      <p>基于您的睡眠特征和生活习惯，AI系统自动生成个性化改善建议。从作息调整、环境优化到放松技巧，提供全方位的睡眠优化方案。</p>
+    </div>
+    <div class="feature-card">
+      <h3>智能关联分析</h3>
+      <p>挖掘日常活动与睡眠质量之间的关联关系，如运动、饮食、工作压力对睡眠的影响。帮助您理解并改善影响睡眠的生活因素。</p>
+    </div>
+    <div class="feature-card">
+      <h3>趋势可视化</h3>
+      <p>通过直观的数据可视化展示您的睡眠质量变化趋势。清晰呈现改善效果，助力建立健康的睡眠习惯。</p>
+    </div>
+  </div>
+</section>
+
+<section id="how-it-works" class="how-it-works">
+  <h2>工作原理</h2>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <h3>佩戴智能戒指</h3>
+        <p>只需在睡眠时佩戴智能戒指，其先进的传感器将持续监测重要的睡眠指标。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <h3>数据处理</h3>
+        <p>我们的AI算法分析您的睡眠数据，识别模式和相关性。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <h3>生成洞察</h3>
+        <p>接收详细的睡眠分析报告和个性化建议。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-number">4</div>
+      <div class="step-content">
+        <h3>追踪进展</h3>
+        <p>随时间监测您的睡眠改善情况，根据数据驱动的洞察调整习惯。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="science-section">
+  <div class="theory-content">
+    <h2>睡眠障碍分析理论基础</h2>
+    <p>我们的睡眠分析系统建立在扎实的医学理论基础之上，结合传统中医理论和现代睡眠医学研究，为用户提供全面的睡眠健康评估。</p>
+
+    <div style="background: white; padding: 30px; border-radius: 15px; margin: 30px 0; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+      <h3 style="color: var(--primary); margin-bottom: 20px;">中医理论核心概念</h3>
+      
+      <div style="margin-bottom: 25px;">
+        <h4 style="color: var(--secondary);">气的概念与睡眠</h4>
+        <p>气是生命活动的基本物质和动力。睡眠质量与气的运行密切相关：</p>
+        <ul style="list-style-type: none; padding-left: 20px;">
+          <li>• 气虚导致入睡困难</li>
+          <li>• 气滞造成睡眠不安</li>
+          <li>• 气逆引起早醒</li>
+        </ul>
+      </div>
+
+      <div style="margin-bottom: 25px;">
+        <h4 style="color: var(--secondary);">阴阳平衡</h4>
+        <p>良好的睡眠需要阴阳平衡：</p>
+        <ul style="list-style-type: none; padding-left: 20px;">
+          <li>• 白天阳气主导，维持清醒活动</li>
+          <li>• 夜间阴气主导，促进休息修复</li>
+          <li>• 阴阳失衡会导致各类睡眠障碍</li>
+        </ul>
+      </div>
+
+      <div style="margin-bottom: 25px;">
+        <h4 style="color: var(--secondary);">五行理论应用</h4>
+        <p>五行理论指导个性化睡眠调理：</p>
+        <ul style="list-style-type: none; padding-left: 20px;">
+          <li>• 木：肝经失调影响入睡</li>
+          <li>• 火：心经异常导致多梦</li>
+          <li>• 土：脾胃功能影响睡眠质量</li>
+          <li>• 金：肺经影响呼吸与睡眠</li>
+          <li>• 水：肾经关系深度睡眠</li>
+        </ul>
+      </div>
+
+      <div style="background: var(--bg); padding: 20px; border-radius: 10px; margin-top: 20px;">
+        <h4 style="color: var(--primary); margin-bottom: 10px;">个性化诊疗优势</h4>
+        <p>中医理论强调"同病异治，异病同治"的个性化诊疗原则。我们的智能分析系统结合传统医学理论，通过对个体气血阴阳状态的综合分析，为每位用户提供量身定制的调理方案。这种个性化的诊疗方式优于现代医学中"一刀切"的治疗模式。</p>
+      </div>
+    </div>
+
+    <div class="insomnia-types">
+      <div class="type-card">
+        <h3>入睡期失眠</h3>
+        <p>主要特征：入睡时间超过30分钟</p>
+        <p>我们的智能戒指可精确追踪从躺下到入睡的时间，帮助识别入睡困难的模式。</p>
+      </div>
+      
+      <div class="type-card">
+        <h3>睡眠维持期失眠</h3>
+        <p>主要特征：夜间觉醒次数超过2次，总觉醒时间超过30分钟</p>
+        <p>通过持续监测体动和生理指标，准确记录夜间觉醒频率和持续时间。</p>
+      </div>
+      
+      <div class="type-card">
+        <h3>睡眠结束期失眠</h3>
+        <p>主要特征：比平时早醒1-2小时，总睡眠时间少于6小时</p>
+        <p>智能算法分析睡眠终止模式，识别异常早醒现象。</p>
+      </div>
+    </div>
+
+    <div class="diagnostic-indicators">
+      <h3>中医证候诊断指标</h3>
+      
+      <div class="indicator-group">
+        <h4>肝部相关症状</h4>
+        <div class="indicator-list">
+          <span class="indicator-tag">头晕</span>
+          <span class="indicator-tag">脉弦</span>
+          <span class="indicator-tag">胁痛胁胀</span>
+        </div>
+      </div>
+
+      <div class="indicator-group">
+        <h4>脾部相关症状</h4>
+        <div class="indicator-list">
+          <span class="indicator-tag">泄泻</span>
+          <span class="indicator-tag">厌食纳少</span>
+          <span class="indicator-tag">脉细弱或濡</span>
+          <span class="indicator-tag">腹胀</span>
+          <span class="indicator-tag">下肢浮肿</span>
+        </div>
+      </div>
+
+      <div class="indicator-group">
+        <h4>心部相关症状</h4>
+        <div class="indicator-list">
+          <span class="indicator-tag">心烦</span>
+          <span class="indicator-tag">多梦</span>
+          <span class="indicator-tag">面色无华</span>
+          <span class="indicator-tag">胆怯易惊</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ring-advantages" style="background: var(--bg); padding: 80px 20px;">
+  <div style="max-width: 800px; margin: 0 auto;">
+    <h2>为什么选择智能戒指？</h2>
+    <p style="margin-bottom: 40px;">虽然市面上已有众多智能手表和手环产品，但智能戒指在睡眠监测领域具有独特的优势。</p>
+
+    <div style="display: grid; grid-template-columns: 1fr; gap: 30px;">
+      <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 3px 15px rgba(0,0,0,0.05);">
+        <h3 style="color: var(--primary); margin-bottom: 15px;">
+          <svg style="width: 24px; height: 24px; margin-right: 10px; vertical-align: middle;" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          </svg>
+          卓越的佩戴舒适度
+        </h3>
+        <p>相比手表和手环，戒指体积小巧，重量轻盈。尤其在夜间睡眠时，不会因体积过大而影响睡姿或产生不适感。长期佩戴更自然，不会产生压迫感或皮肤刺激。</p>
+      </div>
+
+      <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 3px 15px rgba(0,0,0,0.05);">
+        <h3 style="color: var(--primary); margin-bottom: 15px;">
+          <svg style="width: 24px; height: 24px; margin-right: 10px; vertical-align: middle;" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          更可靠的数据采集
+        </h3>
+        <p>手指末端的血管分布密集，是医疗级生理信号采集的理想位置。事实上，临床上广泛使用的指尖血氧仪就是基于这一原理。智能戒指能更稳定地采集心率、血氧等关键指标，不受运动和体位影响。</p>
+      </div>
+
+      <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 3px 15px rgba(0,0,0,0.05);">
+        <h3 style="color: var(--primary); margin-bottom: 15px;">
+          <svg style="width: 24px; height: 24px; margin-right: 10px; vertical-align: middle;" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+          医疗级精确度
+        </h3>
+        <p>我们的技术源自临床医疗设备。全球领先的医疗设备制造商如GE Healthcare等，都在使用基于指尖的监测设备进行手术监护和重症监护。智能戒指采用相同的原理，确保数据的医疗级准确性。</p>
+      </div>
+
+      <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 3px 15px rgba(0,0,0,0.05);">
+        <h3 style="color: var(--primary); margin-bottom: 15px;">
+          <svg style="width: 24px; height: 24px; margin-right: 10px; vertical-align: middle;" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          持续监测优势
+        </h3>
+        <p>戒指的设计使其能在日常活动中自然佩戴，不会影响正常工作和生活。这种无感知的持续监测方式，让我们能收集到更完整的生理数据，从而提供更准确的健康洞察。</p>
+      </div>
+
+      <div style="background: var(--bg); padding: 20px; border-radius: 10px; margin-top: 20px;">
+        <h4 style="color: var(--primary); margin-bottom: 10px;">科研支持</h4>
+        <p>多项研究表明，基于指尖的生理信号监测不仅准确度高，而且稳定性好。这使得智能戒指成为理想的长期健康监测设备，特别是在睡眠监测领域。我们的技术已在多家医疗机构进行了临床验证，确保监测结果的可靠性。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="limitations-section" style="background: white; padding: 80px 20px;">
+  <div style="max-width: 800px; margin: 0 auto;">
+    <h2>现有睡眠监测应用的局限性</h2>
+    <p style="margin-bottom: 40px;">虽然市面上有众多睡眠监测应用，但它们普遍存在一些关键问题，限制了对用户睡眠健康的实质性帮助。</p>
+
+    <div style="display: grid; grid-template-columns: 1fr; gap: 30px;">
+      <div style="background: var(--bg); padding: 30px; border-radius: 15px; box-shadow: 0 3px 15px rgba(0,0,0,0.05);">
+        <h3 style="color: var(--primary); margin-bottom: 15px;">
+          <svg style="width: 24px; height: 24px; margin-right: 10px; vertical-align: middle;" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+          </svg>
+          数据焦虑
+        </h3>
+        <p>传统应用仅仅展示原始数据，导致用户过分关注数字变化。看到异常数据时容易产生不必要的焦虑，反而影响睡眠质量。我们注重数据解读和舒缓性表达，帮助用户正确认识睡眠数据的意义。</p>
+      </div>
+
+      <div style="background: var(--bg); padding: 30px; border-radius: 15px; box-shadow: 0 3px 15px rgba(0,0,0,0.05);">
+        <h3 style="color: var(--primary); margin-bottom: 15px;">
+          <svg style="width: 24px; height: 24px; margin-right: 10px; vertical-align: middle;" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+          </svg>
+          缺乏深度洞察
+        </h3>
+        <p>大多数应用停留在表面数据展示，没有深入分析睡眠趋势和模式。我们的AI算法不仅追踪数据变化，更注重发现数据间的关联性，为用户提供有价值的睡眠洞察。</p>
+      </div>
+
+      <div style="background: var(--bg); padding: 30px; border-radius: 15px; box-shadow: 0 3px 15px rgba(0,0,0,0.05);">
+        <h3 style="color: var(--primary); margin-bottom: 15px;">
+          <svg style="width: 24px; height: 24px; margin-right: 10px; vertical-align: middle;" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+          治标不治本
+        </h3>
+        <p>现有应用往往只能提供一些表面的改善建议，没有深入挖掘睡眠问题的根本原因。我们的系统结合传统医学理论和现代睡眠科学，帮助用户找到并解决睡眠障碍的源头问题。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
