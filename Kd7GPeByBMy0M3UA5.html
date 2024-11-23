@@ -1,0 +1,1362 @@
+<html><head><base href="https://domain.xyz/" />
+<title>HeyTCM Harmony Ring - 智能戒指睡眠分析</title>
+<style>
+:root {
+  --primary: #000000;
+  --secondary: #1d1d1f;
+  --accent: #06c;
+  --text: #1d1d1f;
+  --bg: #fbfbfd;
+  --card-bg: #ffffff;
+  --nav-bg: rgba(251, 251, 253, 0.8);
+  --footer-bg: #1d1d1f;
+  --footer-text: #ffffff;
+
+  /* Add typography scale variables */
+  --h1-size: 56px;
+  --h2-size: 48px;
+  --h3-size: 28px;
+  --body-large: 21px;
+  --body-normal: 17px;
+  --body-small: 14px;
+}
+
+/* Typography base styles */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: var(--body-normal);
+  line-height: 1.5;
+  color: var(--text);
+}
+
+/* Heading styles */
+h1 {
+  font-size: var(--h1-size);
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+h2, h3, h4, h5 {
+  color: var(--text);
+}
+
+h2 {
+  font-size: var(--h2-size);
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+
+h3 {
+  font-size: var(--h3-size);
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+.hero {
+  background: var(--bg);
+  color: var(--text);
+  padding: 200px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero h1 {
+  font-size: var(--h1-size);
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: var(--body-large);
+  font-weight: 400;
+  color: #86868b;
+}
+
+.cta-button {
+  display: inline-block;
+  background: var(--accent);
+  padding: 18px 40px;
+  font-size: 17px;
+  border-radius: 980px;
+  color: white;
+  text-decoration: none;
+  margin-top: 30px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+}
+
+.features, .how-it-works, .science-section, .ring-advantages, .limitations-section, .why-choose-us, .sleep-gaming, .app-showcase, .product-comparison {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 20px;
+  background: var(--bg);
+}
+
+.section h2 {
+  font-size: var(--h2-size);
+  margin-bottom: 50px;
+  color: var(--text);
+}
+
+.section p {
+  font-size: var(--body-normal);
+  line-height: 1.5;
+  margin-bottom: 20px;
+  color: var(--text);
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.feature-card {
+  background: var(--card-bg);
+  color: var(--text);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+}
+
+.feature-card h3 {
+  font-size: var(--h3-size);
+  margin-bottom: 15px;
+}
+
+.feature-card p {
+  font-size: var(--body-normal);
+  margin-bottom: 0;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--nav-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 15px 40px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 100;
+  transition: background-color 0.3s ease;
+}
+
+.logo {
+  color: var(--text);
+  font-weight: bold;
+  font-size: 1.5em;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  margin-left: 40px;  /* Increased spacing from logo */
+  gap: 25px;  /* Consistent spacing between links */
+}
+
+.nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: var(--body-small);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+}
+
+/* Active link indicator */
+.nav-links a:after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover:after,
+.nav-links a.active:after {
+  width: 100%;
+}
+
+/* Theme toggle button refinements */
+.theme-toggle {
+  margin-left: auto; /* Push to right side */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(128, 128, 128, 0.2);
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  color: var(--text);
+}
+
+/* Dark mode specific nav adjustments */
+[data-theme="dark"] .nav {
+  background: var(--nav-bg);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+[data-theme="dark"] .logo,
+[data-theme="dark"] .nav-links a {
+  color: var(--text);
+}
+
+[data-theme="dark"] .theme-toggle svg {
+  color: var(--text);
+}
+
+.how-it-works {
+  background: var(--bg);
+  padding: 80px 20px;
+}
+
+.process-steps {
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.step-number {
+  background: var(--accent);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step:not(:last-child):after {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 40px;
+  bottom: -20px;
+  width: 2px;
+  background: var(--accent);
+  opacity: 0.3;
+}
+
+.science-section {
+  background: #f8f9fa;
+  padding: 80px 20px;
+}
+
+.theory-content {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  color: var(--text);
+}
+
+.insomnia-types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin: 40px 0;
+}
+
+.type-card {
+  background: var(--card-bg);
+  color: var(--text);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.type-card h3 {
+  color: var(--primary);
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 10px;
+}
+
+.diagnostic-indicators {
+  margin-top: 40px;
+  background: var(--card-bg);
+  color: var(--text);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.indicator-group {
+  margin: 20px 0;
+}
+
+.indicator-group h4 {
+  color: var(--secondary);
+  margin-bottom: 10px;
+}
+
+.indicator-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.indicator-tag {
+  background: var(--card-bg);
+  color: var(--text);
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.9em;
+}
+
+/* Add smooth transitions */
+.section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Standardize lists and content alignment */
+.indicator-list,
+.step-content p,
+.type-card p {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+/* Make all sections have consistent vertical spacing */
+section {
+  padding: 120px 20px;
+}
+
+/* Standardize headings across sections */
+section h2 {
+  font-size: var(--h2-size);
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--text);
+}
+
+/* Consistent grid layouts */
+.feature-grid,
+.insomnia-types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin: 40px 0;
+}
+
+/* Consistent card hover effects */
+.feature-card,
+.type-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover,
+.type-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+}
+
+.hero-media video, .data-visualization video {
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.theory-visualization img {
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1));
+}
+
+:root[data-theme="light"] {
+  --primary: #000000;
+  --secondary: #1d1d1f;
+  --accent: #06c;
+  --text: #1d1d1f;
+  --bg: #fbfbfd;
+  --card-bg: #ffffff;
+  --nav-bg: rgba(251, 251, 253, 0.8);
+  --footer-bg: #1d1d1f;
+  --footer-text: #ffffff;
+}
+
+:root[data-theme="dark"] {
+  --primary: #ffffff;
+  --secondary: #f5f5f7;
+  --accent: #2997ff;
+  --text: #f5f5f7;
+  --bg: #000000;  /* 确保是纯黑 */
+  --card-bg: #1d1d1f;
+  --nav-bg: rgba(0, 0, 0, 0.8);
+  --footer-bg: #000000;
+  --footer-text: #f5f5f7;
+}
+
+/*  Fix section backgrounds to ensure consistency */
+section, 
+.hero,
+.features,
+.how-it-works,
+.science-section,
+.ring-advantages,
+.limitations-section,
+.why-choose-us,
+.sleep-gaming,
+.app-showcase,
+.product-comparison {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/*  Fix diagnostic indicators background */
+.diagnostic-indicators {
+  background: var(--card-bg);
+  color: var(--text);
+}
+
+/*  Fix theory content background */
+.theory-content {
+  background: var(--card-bg);
+  color: var(--text);
+}
+
+/*  Fix heading colors */
+h2, h3, h4, h5 {
+  color: var(--text);
+}
+
+/*  Fix footer link colors */
+footer a {
+  color: var(--footer-text);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+footer a:hover {
+  opacity: 1;
+}
+
+/*  Fix card hover effects for better visibility in dark mode */
+[data-theme="dark"] .feature-card:hover,
+[data-theme="dark"] .type-card:hover {
+  box-shadow: 0 6px 25px rgba(255,255,255,0.1);
+}
+
+/*  Fix theme toggle button contrast */
+.theme-toggle {
+  background: transparent;
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/*  Fix navigation link colors */
+.nav-links a {
+  color: var(--text);
+}
+
+/*  Fix logo color */
+.logo {
+  color: var(--text);
+}
+
+/*  Ensure consistent text color in all sections */
+section p,
+.hero p,
+.feature-card p,
+.type-card p,
+.theory-content p {
+  color: var(--text);
+}
+
+/*  Fix border colors in dark mode */
+[data-theme="dark"] .type-card h3 {
+  border-bottom: 2px solid var(--accent);
+}
+
+/*  Fix footer divider color */
+footer > div:last-child {
+  border-top: 1px solid var(--footer-text);
+  opacity: 0.1;
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#" class="logo">HeyTCM</a>
+  <div class="nav-links">
+    <a href="#features">功能特点</a>
+    <a href="#how-it-works">工作原理</a>
+    <a href="#science">理论基础</a>
+    <a href="#ring-advantages">产品优势</a>
+    <a href="#why-choose-us">选择我们</a>
+    <a href="report.html">示例报告</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="display: none;">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/>
+        <line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/>
+        <line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+      <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<section class="hero section">
+  <h1>HeyTCM Harmony Ring<br>用智能戒指改变您的睡眠质量</h1>
+  <div class="hero-media" style="margin: 40px auto; max-width: 800px;">
+    <video width="100%" height="auto" poster="ring-hero-poster.jpg" controls>
+      <source src="hero-video.mp4" type="video/mp4">
+      <!-- 智能戒指产品展示视频 -->
+    </video>
+  </div>
+  <p>由人工智能和尖端传感器技术驱动的高级睡眠分析</p>
+  <a href="report.html" class="cta-button">查看睡眠分析示例</a>
+</section>
+
+<section id="features" class="features section">
+  <h2>我们的高级分析功能</h2>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <h3>智能数据采集与预处理</h3>
+      <p>采用医疗级传感器实时采集心率、心率变异性(HRV)、体温、体动和血氧等关键生理指标。通过高精度信号处理算法，确保数据质量和准确性。</p>
+    </div>
+    <div class="feature-card">
+      <h3>多维度睡眠分析</h3>
+      <p>结合传统医学理论和现代睡眠科学，从生理、心理和环境三个维度解读您的睡眠质量。识别影响睡眠的关键因素，如压力水平、昼夜节律和生活方式习惯。</p>
+    </div>
+    <div class="feature-card">
+      <h3>AI驱动的模式识别</h3>
+      <p>运用机器学习算法分析长期睡眠数据，识别潜在的睡眠障碍模式。通过深度学习模型预测睡眠质量变化趋势，及早发现潜在问题。</p>
+    </div>
+    <div class="feature-card">
+      <h3>个性化干预策略</h3>
+      <p>基于您的睡眠特征和生活习惯，AI系统自动生成个性化改善建议。从作息调整、环境优化到放松技巧，提供全方位的睡眠优化方案。</p>
+    </div>
+    <div class="feature-card">
+      <h3>智能关联分析</h3>
+      <p>挖掘日常活动与睡眠质量之间的关联关系，如运动、饮食、工作压力对睡眠的影响。帮助您理解并改善影响睡眠的生活因素。</p>
+    </div>
+    <div class="feature-card">
+      <h3>趋势可视化</h3>
+      <p>通过直观的数据可视化展示您的睡眠质量变化趋势。清晰呈现改善效果，助力建立健康的睡眠习惯。</p>
+    </div>
+  </div>
+</section>
+
+<section id="how-it-works" class="how-it-works section">
+  <h2>工作原理</h2>
+  <div style="margin: 40px auto; max-width: 800px; text-align: center;">
+    <img 
+      src="ring-workflow.png" 
+      alt="智能戒指工作流程示意图，展示数据采集、分析和反馈的完整过程"
+      width="800"
+      height="450"
+      style="border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);"
+    >
+  </div>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <h3>佩戴智能戒指</h3>
+        <p>只需在睡眠时佩戴智能戒指，其先进的传感器将持续监测重要的睡眠指标。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <h3>数据处理</h3>
+        <p>我们的AI算法分析您的睡眠数据，识别模式和相关性。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <h3>生成洞察</h3>
+        <p>接收详细的睡眠分析报告和个性化建议。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-number">4</div>
+      <div class="step-content">
+        <h3>追踪进展</h3>
+        <p>随时间监测您的睡眠改善情况，根据数据驱动的洞察调整习惯。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="science-section section">
+  <div class="theory-content">
+    <h2>睡眠障碍分析理论基础</h2>
+    <p>我们的睡眠分析系统建立在扎实的医学理论基础之上，结合传统中医理论和现代睡眠医学研究，为用户提供全面的睡眠健康评估。</p>
+    <div class="theory-visualization" style="margin: 40px auto; max-width: 800px; text-align: center;">
+      <img 
+        src="tcm-principles.svg" 
+        alt="中医理论核心概念图解，展示气、阴阳、五行的关系"
+        width="600"
+        height="400"
+        style="margin-bottom: 30px;"
+      >
+    </div>
+
+    <div style="background: var(--card-bg); padding: 30px; border-radius: 15px; margin: 30px 0; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+      <h3 style="color: var(--primary); margin-bottom: 20px;">中医理论核心概念</h3>
+      
+      <div style="margin-bottom: 25px;">
+        <h4 style="color: var(--secondary);">气的概念与睡眠</h4>
+        <p>气是生命活动的基本物质和动力。睡眠质量与气的运行密切相关：</p>
+        <ul style="list-style-type: none; padding-left: 20px;">
+          <li>• 气虚导致入睡困难</li>
+          <li>• 气滞造成睡眠不安</li>
+          <li>• 气逆引起早醒</li>
+        </ul>
+      </div>
+
+      <div style="margin-bottom: 25px;">
+        <h4 style="color: var(--secondary);">阴阳平衡</h4>
+        <p>良好的睡眠需要阴阳平衡：</p>
+        <ul style="list-style-type: none; padding-left: 20px;">
+          <li>• 白天阳气主导，维持清醒活动</li>
+          <li>• 夜间阴气主导，促进休息修复</li>
+          <li>• 阴阳失衡会导致各类睡眠障碍</li>
+        </ul>
+      </div>
+
+      <div style="margin-bottom: 25px;">
+        <h4 style="color: var(--secondary);">五行理论应用</h4>
+        <p>五行理论指导个性化睡眠调理：</p>
+        <ul style="list-style-type: none; padding-left: 20px;">
+          <li>• 木：肝经失调影响入睡</li>
+          <li>• 火：心经异常导致多梦</li>
+          <li>• 土：脾胃功能影响睡眠质量</li>
+          <li>• 金：肺经影响呼吸与睡眠</li>
+          <li>• 水：肾经关系深度睡眠</li>
+        </ul>
+      </div>
+
+      <div style="background: var(--bg); padding: 20px; border-radius: 10px; margin-top: 20px;">
+        <h4 style="color: var(--primary); margin-bottom: 10px;">个性化诊疗优势</h4>
+        <p>中医理论强调"同病异治，异病同治"的个性化诊疗原则。我们的智能分析系统结合传统医学理论，通过对个体气血阴阳状态的综合分析，为每位用户提供量身定制的调理方案。这种个性化的诊疗方式优于现代医学中"一刀切"的治疗模式。</p>
+      </div>
+    </div>
+
+    <div class="insomnia-types">
+      <div class="type-card">
+        <h3>入睡期失眠</h3>
+        <p>主要特征：入睡时间超过30分钟</p>
+        <p>我们的智能戒指可精确追踪从躺下到入睡的时间，帮助识别入睡困难的模式。</p>
+      </div>
+      
+      <div class="type-card">
+        <h3>睡眠维持期失眠</h3>
+        <p>主要特征：夜间觉醒次数超过2次，总觉醒时间超过30分钟</p>
+        <p>通过持续监测体动和生理指标，准确记录夜间觉醒频率和持续时间。</p>
+      </div>
+      
+      <div class="type-card">
+        <h3>睡眠结束期失眠</h3>
+        <p>主要特征：比平时早醒1-2小时，总睡眠时间少于6小时</p>
+        <p>智能算法分析睡眠终止模式，识别异常早醒现象。</p>
+      </div>
+    </div>
+
+    <div class="diagnostic-indicators">
+      <h3>中医证候诊断指标</h3>
+      
+      <div class="indicator-group">
+        <h4>肝部相关症状</h4>
+        <div class="indicator-list">
+          <span class="indicator-tag">头晕</span>
+          <span class="indicator-tag">脉弦</span>
+          <span class="indicator-tag">胁痛胁胀</span>
+        </div>
+      </div>
+
+      <div class="indicator-group">
+        <h4>脾部相关症状</h4>
+        <div class="indicator-list">
+          <span class="indicator-tag">泄泻</span>
+          <span class="indicator-tag">厌食纳少</span>
+          <span class="indicator-tag">脉细弱或濡</span>
+          <span class="indicator-tag">腹胀</span>
+          <span class="indicator-tag">下肢浮肿</span>
+        </div>
+      </div>
+
+      <div class="indicator-group">
+        <h4>心部相关症状</h4>
+        <div class="indicator-list">
+          <span class="indicator-tag">心烦</span>
+          <span class="indicator-tag">多梦</span>
+          <span class="indicator-tag">面色无华</span>
+          <span class="indicator-tag">胆怯易惊</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ring-advantages section" style="background: var(--bg); padding: 80px 20px;">
+  <div style="max-width: 800px; margin: 0 auto;">
+    <h2>为什么选择智能戒指而不是智能手表？</h2>
+    <p style="margin-bottom: 40px;">虽然智能手表和手环已经很普及，但在睡眠监测领域，智能戒指具有独特的优势。</p>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3 style="display: flex; align-items: center;">
+          <svg style="width: 24px; height: 24px; margin-right: 10px;" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          </svg>
+          舒适的佩戴体验
+        </h3>
+        <div style="margin: 20px 0;">
+          <img 
+            src="ring-comfort.jpg" 
+            alt="智能戒指佩戴展示，突出其轻薄舒适的特点"
+            width="100%"
+            height="200"
+            style="border-radius: 10px; object-fit: cover;"
+          >
+        </div>
+        <p>• 轻巧纤薄，夜间佩戴无感知</p>
+        <p>• 不影响翻身和自然睡姿</p>
+        <p>• 长时间佩戴也不会有压迫感</p>
+      </div>
+
+      <div class="feature-card">
+        <h3 style="display: flex; align-items: center;">
+          <svg style="width: 24px; height: 24px; margin-right: 10px;" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+          </svg>
+          更精准的数据采集
+        </h3>
+        <div style="margin: 20px 0;">
+          <img 
+            src="sensor-precision.jpg" 
+            alt="智能戒指传感器技术展示图"
+            width="100%"
+            height="200"
+            style="border-radius: 10px; object-fit: cover;"
+          >
+        </div>
+        <p>• 指尖血流信号更强，数据更稳定</p>
+        <p>• 贴合性更好，减少环境干扰</p>
+        <p>• 采用医疗级传感器技术</p>
+      </div>
+
+      <div class="feature-card">
+        <h3 style="display: flex; align-items: center;">
+          <svg style="width: 24px; height: 24px; margin-right: 10px;" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+          </svg>
+          成熟的指尖监测技术
+        </h3>
+        <div style="margin: 20px 0;">
+          <img 
+            src="clinical-validation.jpg" 
+            alt="指尖血氧监测技术示意图"
+            width="100%"
+            height="200"
+            style="border-radius: 10px; object-fit: cover;"
+          >
+        </div>
+        <p>• 采用与医疗设备类似的指尖监测原理</p>
+        <p>• 参考GE、Philips等大厂的指尖监测技术</p>
+        <p>• 将成熟技术小型化应用于戒指形态</p>
+      </div>
+    </div>
+
+    <div style="background: var(--card-bg); padding: 30px; border-radius: 15px; margin-top: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+      <h3 style="color: var(--primary); margin-bottom: 15px;">源自成熟的监测技术</h3>
+      <p>我们的智能戒指采用的指尖监测技术原理，与GE、Philips等医疗设备制造商在手术监测中使用的技术类似。这些指尖监测设备已在医疗场景中应用多年，证明了这一监测方式的可靠性。我们通过将这一成熟的监测技术微型化，让用户可以通过戒指形态获得持续的健康数据监测。</p>
+    </div>
+  </div>
+</section>
+
+<section class="why-choose-us section" style="background: var(--bg); padding: 80px 20px;">
+  <div style="max-width: 800px; margin: 0 auto;">
+    <h2>为什么选择我们？</h2>
+    <p style="margin-bottom: 40px;">我们不仅提供先进的硬件设备，更重要的是通过AI算法和传统医学理论的结合，帮助用户真正理解并改善自己的睡眠问题。</p>
+
+    <div class="feature-grid" style="grid-template-columns: 1fr;">
+      <div class="feature-card" style="margin-bottom: 30px;">
+        <h3 style="display: flex; align-items: center;">
+          <svg style="width: 24px; height: 24px; margin-right: 10px;" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+          </svg>
+          尖端硬件技术
+        </h3>
+        <div style="margin: 20px 0;">
+          <img 
+            src="sensor-tech.jpg" 
+            alt="先进传感器技术展示图，工业设计风格"
+            width="100%"
+            height="300"
+            style="border-radius: 10px; object-fit: cover;"
+          >
+        </div>
+        <p>采用医疗级传感器和精密工艺：</p>
+        <ul style="list-style-type: none; padding-left: 0;">
+          <li style="margin: 10px 0;">• 最新一代光学传感器，准确度达到医疗级标准</li>
+          <li style="margin: 10px 0;">• 智能降噪算法，有效过滤环境干扰</li>
+          <li style="margin: 10px 0;">• 轻量化设计，佩戴舒适度极佳</li>
+        </ul>
+      </div>
+
+      <div class="feature-card" style="margin-bottom: 30px;">
+        <h3 style="display: flex; align-items: center;">
+          <svg style="width: 24px; height: 24px; margin-right: 10px;" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+          </svg>
+          融合传统医学的AI算法
+        </h3>
+        <div style="margin: 20px 0;">
+          <img 
+            src="ai-tcm.jpg" 
+            alt="AI与传统医学结合示意图，现代科技风格"
+            width="100%"
+            height="300"
+            style="border-radius: 10px; object-fit: cover;"
+          >
+        </div>
+        <p>独特的算法优势：</p>
+        <ul style="list-style-type: none; padding-left: 0;">
+          <li style="margin: 10px 0;">• 结合传统医学理论的深度学习模型</li>
+          <li style="margin: 10px 0;">• 个性化分析系统，适应不同体质特点</li>
+          <li style="margin: 10px 0;">• 持续学习优化，诊断准确度不断提升</li>
+        </ul>
+      </div>
+
+      <div class="feature-card">
+        <h3 style="display: flex; align-items: center;">
+          <svg style="width: 24px; height: 24px; margin-right: 10px;" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/>
+          </svg>
+          以用户为中心的解决方案
+        </h3>
+        <div style="background: var(--bg); padding: 25px; border-radius: 15px; margin: 20px 0;">
+          <h4 style="color: var(--primary); margin-bottom: 15px;">回答两个核心问题</h4>
+          
+          <div style="margin-bottom: 20px;">
+            <h5 style="color: var(--secondary); margin-bottom: 10px;">1. 我到底是怎么了？</h5>
+            <p>• 全面分析睡眠障碍的具体表现和深层原因</p>
+            <p>• 结合传统医学理论解读体质特点</p>
+            <p>• 建立个人睡眠档案，追踪长期变化</p>
+          </div>
+
+          <div>
+            <h5 style="color: var(--secondary); margin-bottom: 10px;">2. 我应该怎么办？</h5>
+            <p>• 提供个性化的改善方案和具体建议</p>
+            <p>• 动态调整建议，根据反馈优化方案</p>
+            <p>• 长期跟踪效果，确保改善效果</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <h3 style="display: flex; align-items: center;">
+          <svg style="width: 24px; height: 24px; margin-right: 10px;" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+          </svg>
+          开放数据与API生态
+        </h3>
+        <div style="margin: 20px 0;">
+          <img 
+            src="open-api.jpg" 
+            alt="API文档和数据可视化界面展示，现代技术风格"
+            width="100%"
+            height="300"
+            style="border-radius: 10px; object-fit: cover;"
+          >
+        </div>
+        <p>我们致力于构建开放、透明的数据生态系统：</p>
+        <ul style="list-style-type: none; padding-left: 0;">
+          <li style="margin: 10px 0;">
+            <strong>• REST API接口</strong>
+            <p>提供完整的API文档和SDK，让开发者能够轻松接入数据，开发个性化应用</p>
+          </li>
+          <li style="margin: 10px 0;">
+            <strong>• 研究数据集</strong>
+            <p>定期发布匿名化的睡眠数据集，支持学术研究和算法创新</p>
+          </li>
+          <li style="margin: 10px 0;">
+            <strong>• 开发者社区</strong>
+            <p>活跃的开发者论坛，技术支持和最佳实践分享</p>
+          </li>
+        </ul>
+        
+        <div style="background: var(--bg); padding: 20px; border-radius: 10px; margin-top: 20px;">
+          <h4 style="color: var(--primary); margin-bottom: 10px;">数据安全与隐私</h4>
+          <p>• 严格的数据脱敏处理</p>
+          <p>• 完善的授权机制</p>
+          <p>• 符合GDPR等隐私法规要求</p>
+        </div>
+        
+        <div style="background: var(--bg); padding: 20px; border-radius: 10px; margin-top: 20px;">
+          <h4 style="color: var(--primary); margin-bottom: 10px;">应用场景</h4>
+          <p>• 个性化睡眠管理应用</p>
+          <p>• 科研机构睡眠研究</p>
+          <p>• 智能家居场景联动</p>
+          <p>• 医疗机构睡眠监测</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="limitations-section section" style="background: var(--card-bg); padding: 80px 20px;">
+  <div style="max-width: 800px; margin: 0 auto;">
+    <h2>现有睡眠监测应用的局限性</h2>
+    <p style="margin-bottom: 40px;">虽然市面上有众多睡眠监测应用，但它们普遍存在一些关键问题，限制了对用户睡眠健康的实质性帮助。</p>
+
+    <div style="display: grid; grid-template-columns: 1fr; gap: 30px;">
+      <div style="background: var(--bg); padding: 30px; border-radius: 15px; box-shadow: 0 3px 15px rgba(0,0,0,0.05);">
+        <h3 style="color: var(--primary); margin-bottom: 15px;">
+          <svg style="width: 24px; height: 24px; margin-right: 10px; vertical-align: middle;" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+          </svg>
+          数据焦虑
+        </h3>
+        <p>传统应用仅仅展示原始数据，导致用户过分关注数字变化。看到异常数据时容易产生不必要的焦虑，反而影响睡眠质量。我们注重数据解读和舒缓性表达，帮助用户正确认识睡眠数据的意义。</p>
+      </div>
+
+      <div style="background: var(--bg); padding: 30px; border-radius: 15px; box-shadow: 0 3px 15px rgba(0,0,0,0.05);">
+        <h3 style="color: var(--primary); margin-bottom: 15px;">
+          <svg style="width: 24px; height: 24px; margin-right: 10px; vertical-align: middle;" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+          </svg>
+          缺乏深度洞察
+        </h3>
+        <p>大多数应用停留在表面数据展示，没有深入分析睡眠趋势和模式。我们的AI算法不仅追踪数据变化，更注重发现数据间的关联性，为用户提供有价值的睡眠洞察。</p>
+      </div>
+
+      <div style="background: var(--bg); padding: 30px; border-radius: 15px; box-shadow: 0 3px 15px rgba(0,0,0,0.05);">
+        <h3 style="color: var(--primary); margin-bottom: 15px;">
+          <svg style="width: 24px; height: 24px; margin-right: 10px; vertical-align: middle;" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+          治标不治本
+        </h3>
+        <p>现有应用往往只能提供一些表面的改善建议，没有深入挖掘睡眠问题的根本原因。我们的系统结合传统医学理论和现代睡眠科学，帮助用户找到并解决睡眠障碍的源头问题。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sleep-gaming section" style="background: var(--bg); padding: 80px 20px;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <h2>睡眠伙伴 - 游戏化睡眠体验</h2>
+    <p style="text-align: center; margin-bottom: 40px;">通过有趣的游戏化体验，让改善睡眠变得轻松愉快</p>
+    
+    <div class="feature-grid" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="feature-card">
+        <img 
+          src="sleep-animal-1.jpg" 
+          alt="可爱的睡眠动物伙伴，卡通风格插画"
+          width="100%"
+          height="200"
+          style="border-radius: 10px; object-fit: cover; margin-bottom: 20px;"
+        >
+        <h3>专属睡眠动物</h3>
+        <p>基于您的睡眠模式，匹配最适合的睡眠动物伙伴。它们会随着您的睡眠质量成长和进化。</p>
+      </div>
+      
+      <div class="feature-card">
+        <img 
+          src="sleep-achievements.jpg" 
+          alt="睡眠成就系统界面展示"
+          width="100%"
+          height="200"
+          style="border-radius: 10px; object-fit: cover; margin-bottom: 20px;"
+        >
+        <h3>睡眠成就系统</h3>
+        <p>完成每日睡眠目标，解锁独特成就徽章。持续保持良好睡眠习惯，收集稀有徽章。</p>
+      </div>
+      
+      <div class="feature-card">
+        <img 
+          src="sleep-social.jpg" 
+          alt="社交互动功能界面展示"
+          width="100%"
+          height="200"
+          style="border-radius: 10px; object-fit: cover; margin-bottom: 20px;"
+        >
+        <h3>好友互动</h3>
+        <p>与朋友分享睡眠进展，互相鼓励。参与睡眠挑战，一起培养健康作息。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="app-showcase section" style="background: var(--bg); padding: 80px 20px;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <h2>直观的应用界面</h2>
+    <p style="text-align: center; margin-bottom: 40px;">简洁优雅的设计，让您轻松掌握睡眠数据</p>
+    
+    <div class="app-slider" id="appSlider">
+      <div class="slider-container" style="overflow: hidden; position: relative;">
+        <div class="slider-track" style="display: flex; transition: transform 0.3s ease;">
+          <div class="slide" style="min-width: 100%; padding: 0 20px;">
+            <img 
+              src="app-screen-1.jpg" 
+              alt="应用主界面展示，深色主题设计"
+              width="300"
+              height="600"
+              style="border-radius: 20px; margin: 0 auto; display: block;"
+            >
+          </div>
+          <div class="slide" style="min-width: 100%; padding: 0 20px;">
+            <img 
+              src="app-screen-2.jpg" 
+              alt="睡眠数据详情页面"
+              width="300"
+              height="600"
+              style="border-radius: 20px; margin: 0 auto; display: block;"
+            >
+          </div>
+          <div class="slide" style="min-width: 100%; padding: 0 20px;">
+            <img 
+              src="app-screen-3.jpg" 
+              alt="个性化建议页面"
+              width="300"
+              height="600"
+              style="border-radius: 20px; margin: 0 auto; display: block;"
+            >
+          </div>
+        </div>
+        <button class="slider-btn prev" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%);">←</button>
+        <button class="slider-btn next" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%);">→</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="product-comparison section" style="background: var(--bg); padding: 80px 20px;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <h2>产品优势对比</h2>
+    <p style="text-align: center; margin-bottom: 40px;">深入了解Harmony Ring S1的独特优势</p>
+    
+    <div class="comparison-table" style="overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; background: var(--card-bg); border-radius: 15px;">
+        <thead>
+          <tr style="background: var(--accent); color: white;">
+            <th style="padding: 15px; text-align: left;">功能特点</th>
+            <th style="padding: 15px; text-align: center;">Harmony Ring S1</th>
+            <th style="padding: 15px; text-align: center;">Oura Ring</th>
+            <th style="padding: 15px; text-align: center;">Ultrahuman</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 15px; border-bottom: 1px solid var(--bg);">中医理论整合</td>
+            <td style="padding: 15px; text-align: center; border-bottom: 1px solid var(--bg);">✓</td>
+            <td style="padding: 15px; text-align: center; border-bottom: 1px solid var(--bg);">✗</td>
+            <td style="padding: 15px; text-align: center; border-bottom: 1px solid var(--bg);">✗</td>
+          </tr>
+          <tr>
+            <td style="padding: 15px; border-bottom: 1px solid var(--bg);">游戏化体验</td>
+            <td style="padding: 15px; text-align: center; border-bottom: 1px solid var(--bg);">✓</td>
+            <td style="padding: 15px; text-align: center; border-bottom: 1px solid var(--bg);">✗</td>
+            <td style="padding: 15px; text-align: center; border-bottom: 1px solid var(--bg);">部分支持</td>
+          </tr>
+          <tr>
+            <td style="padding: 15px; border-bottom: 1px solid var(--bg);">开放API</td>
+            <td style="padding: 15px; text-align: center; border-bottom: 1px solid var(--bg);">✓</td>
+            <td style="padding: 15px; text-align: center; border-bottom: 1px solid var(--bg);">限制访问</td>
+            <td style="padding: 15px; text-align: center; border-bottom: 1px solid var(--bg);">✗</td>
+          </tr>
+          <tr>
+            <td style="padding: 15px; border-bottom: 1px solid var(--bg);">AI个性化建议</td>
+            <td style="padding: 15px; text-align: center; border-bottom: 1px solid var(--bg);">✓</td>
+            <td style="padding: 15px; text-align: center; border-bottom: 1px solid var(--bg);">✓</td>
+            <td style="padding: 15px; text-align: center; border-bottom: 1px solid var(--bg);">✓</td>
+          </tr>
+          <tr>
+            <td style="padding: 15px; border-bottom: 1px solid var(--bg);">数据展示</td>
+            <td style="padding: 15px; text-align: center; border-bottom: 1px solid var(--bg);">
+              实时图表动态展示<br>
+              多维度数据交互<br>
+              自定义数据面板
+            </td>
+            <td style="padding: 15px; text-align: center; border-bottom: 1px solid var(--bg);">
+              基础图表展示<br>
+              固定数据视图
+            </td>
+            <td style="padding: 15px; text-align: center; border-bottom: 1px solid var(--bg);">
+              基础图表展示<br>
+              有限数据维度
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 15px; border-bottom: 1px solid var(--bg);">趋势洞察</td>
+            <td style="padding: 15px; text-align: center; border-bottom: 1px solid var(--bg);">
+              多因素关联分析<br>
+              AI预测趋势<br>
+              个性化见解推送
+            </td>
+            <td style="padding: 15px; text-align: center; border-bottom: 1px solid var(--bg);">
+              基础趋势分析<br>
+              有限的预测功能
+            </td>
+            <td style="padding: 15px; text-align: center; border-bottom: 1px solid var(--bg);">
+              简单趋势图表<br>
+              无预测功能
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 15px;">数据研究共享</td>
+            <td style="padding: 15px; text-align: center;">✓</td>
+            <td style="padding: 15px; text-align: center;">✗</td>
+            <td style="padding: 15px; text-align: center;">✗</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer style="background: var(--footer-bg); color: var(--footer-text); padding: 80px 20px;">
+  <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
+    <div>
+      <h3 style="color: var(--footer-text); margin-bottom: 20px;">HeyTCM</h3>
+      <p style="color: #86868b;">致力于将传统医学智慧与现代科技结合，创新数字健康解决方案。</p>
+      <div style="margin-top: 20px;">
+        <a href="https://www.heytcm.com" style="color: var(--footer-text); text-decoration: none; margin-right: 20px;">
+          <svg style="width: 24px; height: 24px;" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.84 9.49.5.09.68-.22.68-.47 0-.23-.01-.84-.01-1.65-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48A10.019 10.019 0 0022 12c0-5.523-4.477-10-10-10z"/>
+          </svg>
+        </a>
+        <a href="https://twitter.com/heytcm" style="color: var(--footer-text); text-decoration: none; margin-right: 20px;">
+          <svg style="width: 24px; height: 24px;" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    
+    <div>
+      <h4 style="color: var(--footer-text); margin-bottom: 20px;">产品</h4>
+      <ul style="list-style: none; padding: 0;">
+        <li style="margin-bottom: 10px;">
+          <a href="#harmony-ring" style="color: #86868b; text-decoration: none;">Harmony Ring S1</a>
+        </li>
+        <li style="margin-bottom: 10px;">
+          <a href="harmony-ring-d1.html" style="color: #86868b; text-decoration: none;">Harmony Ring D1</a>
+        </li>
+        <li style="margin-bottom: 10px;"><a href="app.html" style="color: #86868b; text-decoration: none;">移动应用</a></li>
+        <li style="margin-bottom: 10px;"><a href="api.html" style="color: #86868b; text-decoration: none;">开发者API</a></li>
+      </ul>
+    </div>
+    
+    <div>
+      <h4 style="color: var(--footer-text); margin-bottom: 20px;">资源</h4>
+      <ul style="list-style: none; padding: 0;">
+        <li style="margin-bottom: 10px;"><a href="docs.html" style="color: #86868b; text-decoration: none;">开发文档</a></li>
+        <li style="margin-bottom: 10px;"><a href="research.html" style="color: #86868b; text-decoration: none;">研究数据</a></li>
+        <li style="margin-bottom: 10px;"><a href="blog.html" style="color: #86868b; text-decoration: none;">博客</a></li>
+      </ul>
+    </div>
+    
+    <div>
+      <h4 style="color: var(--footer-text); margin-bottom: 20px;">联系我们</h4>
+      <p style="color: #86868b;">support@heytcm.com</p>
+      <p style="color: #86868b;">商务合作: business@heytcm.com</p>
+      <p style="color: #86868b;">媒体垂询: press@heytcm.com</p>
+    </div>
+  </div>
+  
+  <div style="max-width: 1200px; margin: 60px auto 0; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #86868b; font-size: 14px;">
+    <p>© 2024 HeyTCM Technology Co., Ltd. 保留所有权利</p>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const sections = document.querySelectorAll('.section');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+
+  // Add active link highlighting
+  const navLinks = document.querySelectorAll('.nav-links a');
+  
+  // Highlight active section based on scroll position
+  const observerOptions = {
+    threshold: 0.5,
+    rootMargin: "-50% 0px -50% 0px"
+  };
+  
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const id = entry.target.getAttribute('id');
+      const link = document.querySelector(`.nav-links a[href="#${id}"]`);
+      
+      if (entry.isIntersecting && link) {
+        navLinks.forEach(link => link.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, observerOptions);
+
+  // Observe all sections that have corresponding nav links
+  document.querySelectorAll('section[id]').forEach(section => {
+    sectionObserver.observe(section);
+  });
+
+  // Smooth scroll to sections
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').substring(1);
+      const targetSection = document.getElementById(targetId);
+      
+      if (targetSection) {
+        targetSection.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  // Theme toggle functionality
+  const themeToggle = document.getElementById('themeToggle');
+  const sunIcon = themeToggle.querySelector('.sun-icon');
+  const moonIcon = themeToggle.querySelector('.moon-icon');
+  
+  // Check for saved theme preference or default to light
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeIcons(savedTheme);
+
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcons(newTheme);
+  });
+
+  function updateThemeIcons(theme) {
+    if (theme === 'dark') {
+      sunIcon.style.display = 'block';
+      moonIcon.style.display = 'none';
+    } else {
+      sunIcon.style.display = 'none';
+      moonIcon.style.display = 'block';
+    }
+  }
+
+  // App Screenshots Slider
+  const slider = document.querySelector('.slider-track');
+  const slides = document.querySelectorAll('.slide');
+  const prevBtn = document.querySelector('.slider-btn.prev');
+  const nextBtn = document.querySelector('.slider-btn.next');
+  let currentSlide = 0;
+
+  function updateSlider() {
+    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+  }
+
+  prevBtn.addEventListener('click', () => {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    updateSlider();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateSlider();
+  });
+
+  // Auto slide every 5 seconds
+  setInterval(() => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateSlider();
+  }, 5000);
+});
+</script>
+
+</body>
+</html>
